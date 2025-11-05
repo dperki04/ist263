@@ -75,9 +75,4 @@ nav a:hover {
   max-width: 100%;
 }
 
-.row1, .row2 {
-  display: flex;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-}
 
