@@ -75,4 +75,19 @@ nav a:hover {
   max-width: 100%;
 }
 
+@media screen and (max-width: 800px) {
+  nav {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  }
+  nav a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+  }
+  nav span {
+    display: none;
+  }
+}
 
