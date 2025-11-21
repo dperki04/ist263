@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Outdoors Guide - Map</title>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a> <span>|</span>
+        <a href="gear.html">Gear</a> <span>|</span>
+        <a href="map.html">Map</a>
+    </nav>
+
+    <header>
+        <h1>Public Land and Water Access Map</h1>
+    </header>
+
+    <main>
+        <p>Use this interactive map to explore public lands and waterways across the United States. Find access points for boating, hiking, and wildlife observation.</p>
+        <p><strong>Note:</strong> Information is based on state wildlife databases and may not be completely accurate. Always follow posted signs and use your best judgement.</p>
+
+        <img src="../project/media/MassWildLife_logo.png" alt="MassWildlife Logo" width="100">
+        <img src="../project/media/Audobon.jpeg" alt="Audubon Society Logo" width="100">
+        <img src="../project/media/Bison.jpg" alt="Bison in the Wild" width="100">
+
+        <h2>Map View</h2>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.6238599675394!2d-76.14062992395466!3d43.04934497113723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d9f3a5e0952113%3A0xa671279445418b15!2s820-900%20S%20Crouse%20Ave%2C%20Syracuse%2C%20NY%2013210!5e0!3m2!1sen!2sus!4v1757540488157!5m2!1sen!2sus" 
+          width="600" height="450" 
+          style="border:0;"
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+
+        <section>
+            <h2>Find Public Land by Filters</h2>
+            <form action="#" method="get">
+                <label for="state">State:</label>
+                <select id="state" name="state">
+                    <option value="">--Select--</option>
+                </select>
+
+                <label for="activity">Activity:</label>
+                <select id="activity" name="activity">
+                    <option value="">--Choose--</option>
+                </select>
+
+                <label for="season">Season:</label>
+                <select id="season" name="season">
+                    <option value="">--Select--</option>
+                </select>
+                <button type="submit">Search</button>
+            </form>
+        </sectio
