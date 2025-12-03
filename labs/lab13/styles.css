@@ -9,9 +9,12 @@ a {
   color: #060606;
 }
 
-h1,
+h1 {
+  color: #432818;
+}
+
 h2 {
-  color: #ffe6a7;
+  color: ffe6a7;
 }
 
 h1 {
