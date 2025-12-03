@@ -11,7 +11,7 @@ a {
 
 h1,
 h2 {
-  color: #432818;
+  color: #EACBBD;
 }
 
 h1 {
@@ -25,11 +25,11 @@ nav {
 }
 
 nav a {
-  color: #00507A;
+  color: #001B29;
 }
 
 nav a:hover {
-  background-color: #99582A;
+  background-color: #C06F35;
 }
 
 .flexbox-2 {
@@ -50,7 +50,7 @@ nav a:hover {
 }
 
 .other-skills {
-  background-color: #7F6234;
+  background-color: #6C5528;
   color: #ffe6a7;
   flex: 1;
   border-radius: 15px;
