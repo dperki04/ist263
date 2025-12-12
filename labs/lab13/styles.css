@@ -5,6 +5,11 @@ body {
   padding: 20px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playwrite NO", cursive;
+}
+
+
 a {
   color: #060606;
 }
@@ -14,7 +19,7 @@ h1 {
 }
 
 h2 {
-  color: ffe6a7;
+  color: #ffe6a7;
 }
 
 h1 {
