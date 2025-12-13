@@ -3,41 +3,207 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Outdoors Guide - Gear</title>
+    <title>Outdoors Guide - Activities</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ECE2D0;
+            color: #2b2b2b; 
+        }
+        
+        #navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            background: #356859;
+            padding: 1rem;
+        }
+
+        #navigation h1 {
+            position: absolute;
+            left: 1rem;               
+            color: #fff;
+            font-size: 1.25rem;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        #navigation a, h1{
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        iframe {
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        section {
+            padding: 1rem 0;
+        }
+        .media-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .media-row img {
+            max-width: 350px;
+            width: 100%;
+            border-radius: 8px;
+            margin-left: auto;
+        }
+
+        @media (max-width: 800px) {
+            .media-row {
+                flex-direction: column;
+            
+            }
+            
+            .search-panel {
+                margin-bottom: 2rem;
+            }
+
+            #navigation {
+                flex-direction: column;   
+                align-items: flex-start; 
+                gap: 0.5rem;
+                padding: 0.5rem;
+                position: static;         
+            }
+
+            #navigation h1 {
+                position: static; 
+                font-size: 1rem;          
+                margin-bottom: 0.5rem;
+            }
+
+            #navigation a {
+                margin: 0.25rem 0;        
+            }
+
+            #navigation span {
+                display: none;
+            }
+        }
+
+
+    </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html">Home</a> <span>|</span>
-        <a href="gear.html">Gear</a> <span>|</span>
-        <a href="map.html">Map</a>
-    </nav>
-
-    <header>
-        <h1>Gear</h1>
+    <header id="header">
+        <nav id="navigation">
+            <h1>Outdoors Guide - Activities</h1>
+            <a href="index.html">Home</a> 
+            <span>|</span>
+            <a href="gear.html">Activities</a> 
+            <span>|</span>
+            <a href="map.html">Map</a>
+        </nav>
     </header>
 
     <main>
         <h2>Find the Right Gear for Every Adventure</h2>
-        <p>Browse accessible gear options, compare brands, and learn what tools fit your needs. Whether you’re fishing, hiking, or camping, our goal is to make sure you’re well-prepared with reliable and fair-use equipment.</p>
-
-        <h3>Video Guide</h3>
-        <p>Watch this video for an overview of recommended outdoor gear and preparation tips:</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/CwjILUmIUik?si=tzSKFLvnFvKjL6sG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <p>Use this search bar to find gear recommendations for your specific activity. Learn about the diffrent seasonal activites, required licensing, and recommended gear.</p>
 
         <section>
-            <h3>Search for Gear</h3>
-            <p>Use this search bar to explore gear based on your preferences. This feature is for demonstration and will be fully functional in future phases.</p>
-            <form action="#" method="get">
-                <label for="gear-search">Search Gear:</label>
-                <input type="text" id="gear-search" name="query" placeholder="e.g. fishing rod, hiking boots">
-                <button type="submit">Search</button>
-            </form>
+            <h3>Video Guide</h3>
+            <p>Watch this video for an overview of recommended outdoor gear and preparation tips:</p>
+
+            <div class="media-row">
+                <div class="search-panel">
+                <h2>Find Public Land Activities</h2>
+                <form id="public-land-form">
+                    <label for="activity">Activity:</label>
+                    <select id="activity" name="activity">
+                        <option value="">--Select Activity--</option>
+                    </select>
+
+                    <label for="season">Season:</label>
+                    <select id="season" name="season">
+                        <option value="">--Select Season--</option>
+                    </select>
+
+                    <label for="species">Species / Focus:</label>
+                    <select id="species" name="species">
+                        <option value="">--Select--</option>
+                    </select>
+                </form>
+                    <div id="search-results"></div>
+                </div>
+                <img src="media/fishing.png" alt="Fishing gear laid out near a river">
+            </div>
         </section>
+
     </main>
 
     <footer>
         <p>&copy; 2025 Outdoors Guide</p>
     </footer>
+        <script>
+            const publicLandData = [
+                { name: "Berkshire Forest", activity: "Hiking", season: "All Year", focus: "Trails" },
+                { name: "Striped Bass Run", activity: "Fishing", season: "Spring", focus: "Striped Bass" },
+                { name: "Trout Run", activity: "Fishing", season: "Fall", focus: "Trout" },
+                { name: "Quabbin Reservoir", activity: "Boating", season: "Summer", focus: "Canoe/Kayak" },
+                { name: "Audubon Sanctuary", activity: "Bird Watching", season: "All Year", focus: "Birds" },
+                { name: "Deer Hunting Area 12", activity: "Hunting", season: "Fall", focus: "Deer" },
+                { name: "Pheasant Hunting Area 8", activity: "Hunting", season: "Winter", focus: "Pheasant" }
+            ];
+            const activitySelect = document.getElementById('activity');
+            const seasonSelect = document.getElementById('season');
+            const focusSelect = document.getElementById('species');
+            const resultsDiv = document.getElementById('search-results');
+
+            function populateDropdown(select, values) {
+                values.forEach(val => {
+                    const option = document.createElement('option');
+                    option.value = val;
+                    option.textContent = val;
+                    select.appendChild(option);
+                });
+            }
+
+            const activities = ["Hiking", "Fishing", "Boating", "Bird Watching", "Hunting"];
+            const seasons = ["All Year", "Spring", "Summer", "Fall", "Winter"];
+            const focuses = ["Trails", "Striped Bass", "Trout", "Canoe/Kayak", "Birds", "Deer", "Pheasant"];
+
+
+            populateDropdown(activitySelect, activities);
+            populateDropdown(seasonSelect, seasons);
+            populateDropdown(focusSelect, focuses);
+
+            function filterResults() {
+                const activity = activitySelect.value;
+                const season = seasonSelect.value;
+                const focus = focusSelect.value;
+
+                const filtered = publicLandData.filter(item => 
+                    (!activity || item.activity === activity) &&
+                    (!season || item.season === season) &&
+                    (!focus || item.focus === focus)
+                );
+
+                resultsDiv.innerHTML = filtered.length
+                    ? filtered.map(item => `${item.name} — ${item.activity} (${item.season})`).join('<br>')
+                    : 'No results found.'; 
+            }
+
+
+            activitySelect.addEventListener('change', filterResults);
+            seasonSelect.addEventListener('change', filterResults);
+            focusSelect.addEventListener('change', filterResults);
+    </script>
 </body>
 </html>

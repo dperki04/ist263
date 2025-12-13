@@ -13,7 +13,8 @@
             background-color: #ECE2D0;
             color: #2b2b2b; 
         }
-            #navigation {
+
+        #navigation {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,25 +24,19 @@
             padding: 1rem;
         }
 
-        #navigation a {
+        #navigation h1 {
+            position: absolute;
+            left: 1rem;               
             color: #fff;
-            text-decoration: none;
+            font-size: 1.25rem;
+            margin: 0;
             font-weight: bold;
         }
 
-        #navigation span {
-            color: #a3c9a8;
-        }
-
-        #header {
-            text-align: center;
-            background: #a3c9a8;
-            padding: 2rem 0;
-        }
-
-        #header h1 {
-            margin: 0;
-            color: #1b3a2e;
+        #navigation a, h1{
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         #nature-image {
@@ -60,7 +55,7 @@
             float: left;
         }
 
-        .yosemite-caption {
+        .berkshire-caption {
             max-width: 400px;
             line-height: 1.5;
         }
@@ -102,13 +97,26 @@
         }
 
         @media (max-width: 800px) {
-            #navigation span {
-                display: none;
+            #navigation {
+                flex-direction: column;   
+                align-items: flex-start; 
+                gap: 0.5rem;
+                padding: 0.5rem;
+                position: static;         
             }
 
-            #navigation {
-                flex-direction: column;
-                gap: 0.5rem;
+            #navigation h1 {
+                position: static; 
+                font-size: 1rem;          
+                margin-bottom: 0.5rem;
+            }
+
+            #navigation a {
+                margin: 0.25rem 0;        
+            }
+
+            #navigation span {
+                display: none;
             }
 
             #nature-image {
@@ -116,7 +124,7 @@
                 text-align: center;
             }
 
-            .yosemite-caption {
+            .berkshire-caption {
                 max-width: 100%;
             }
 
@@ -134,22 +142,27 @@
 
 
 <body>
-    <nav id="navigation">
-        <a href="index.html">Home</a> <span>|</span>
-        <a href="gear.html">Gear</a> <span>|</span>
-        <a href="map.html">Map</a>
-    </nav>
-
-    <header id="header">    
-        <h1>Outdoors Guide</h1>
+    <header id="header">
+        <nav id="navigation">
+            <h1>Outdoors Guide</h1>
+            <a href="index.html">Home</a> 
+            <span>|</span>
+            <a href="gear.html">Activities</a> 
+            <span>|</span>
+            <a href="map.html">Map</a>
+        </nav>
     </header>
 
     <main id="content">
         <div id="nature-image" class="nature">
-            <img src="media/Yosemite.png" alt="Yosemite landscape" width="600">
-            <div class="yosemite-caption">
-                <p class="caption-title">Yosemite National Park, California</p>
-
+            <figure class="berkshire-figure">
+                <img src="media/sunset.jpg" alt="Sunset over the Berkshire Mountains in Massachusetts" width="600">
+                <figcaption>
+                    <strong>Berkshire County, Massachusetts</strong><br>
+                    <span class="photo-credit">Photo by David Perkins, May 2025</span>
+                </figcaption>
+            </figure>
+            <div class="berkshire-caption">
                 <p>Welcome to the Outdoors Guide!</p>
                 <p>Discover the joys of outdoors sports.</p>
                 <p>Our mission: To connect people with the outdoors through a collaborative effort between users. We are aiming to provide tips, tricks, reliable information, and guidance for responsible wildlife use to preserve our land for future generations.</p>
