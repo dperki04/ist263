@@ -12,6 +12,7 @@
                 padding: 0;
                 background-color: #ECE2D0;
                 color: #2b2b2b; 
+                
             }
             
             #navigation {
@@ -51,6 +52,10 @@
             iframe {
                 border: 0;
                 margin-top: 2rem;
+                flex: 1;
+                width: 100%;     
+                border: 0;
+                overflow: hidden;
             }
 
             section {
@@ -166,8 +171,11 @@
             <h2>Massachusetts Land View</h2>
             <iframe
                 src="https://mass-eoeea.maps.arcgis.com/apps/webappviewer/index.html?id=3a7c475cb6d54578ba8c7149d885ad30&embed=true"
-                width="100%; height:600px; border: 0; overflow: hidden;"
-                title="Massachusetts Public Lands Map">
+                title="Massachusetts Public Lands Map"
+                height="600"
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
             </iframe> 
             <br>
             <img src="media/Bison.jpg" alt="Bison in the Wild" width="300">
