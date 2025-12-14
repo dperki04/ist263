@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project 5</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ECE2D0;
+            color: #2b2b2b; 
+        }
+
+        #navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            background: #356859;
+            padding: 1rem;
+        }
+
+        #navigation h1 {
+            position: absolute;
+            left: 1rem;               
+            color: #fff;
+            font-size: 1.25rem;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        #navigation a, h1{
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid transparent;
+        }
+        #navigation a:hover {
+            border-bottom: 2px solid #2b2b2b;
+        }
+
+        #nature-image {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        #nature-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            float: left;
+        }
+
+        .berkshire-caption {
+            max-width: 400px;
+            line-height: 1.5;
+        }
+
+        .caption-title {
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 0;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: stretch;
+            padding: 2rem;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .info-box {
+            background: #a3c9a8;
+            padding: 1rem;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .info-box img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #356859;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 800px) {
+            #navigation {
+                flex-direction: column;   
+                align-items: flex-start; 
+                gap: 0.5rem;
+                padding: 0.5rem;
+                position: static;         
+            }
+
+            #navigation h1 {
+                position: static; 
+                font-size: 1rem;          
+                margin-bottom: 0.5rem;
+            }
+
+            #navigation a {
+                margin: 0.25rem 0;        
+            }
+
+            #navigation span {
+                display: none;
+            }
+
+            #nature-image {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .berkshire-caption {
+                max-width: 100%;
+            }
+
+            .info-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info-box {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <header id="header">
+        <nav id="navigation">
+            <h1>Outdoors Guide</h1>
+            <a href="index.html">Home</a> 
+            <a href="gear.html">Activities</a> 
+            <a href="map.html">Map</a>
+        </nav>
+    </header>
+
+    <main id="content">
+        <div id="nature-image" class="nature">
+            <figure class="berkshire-figure">
+                <img src="media/sunset.jpg" alt="Sunset over the Berkshire Mountains in Massachusetts" width="600">
+                <figcaption>
+                    <strong>Berkshire County, Massachusetts</strong><br>
+                    <span class="photo-credit">Photo by David Perkins, May 2025</span>
+                </figcaption>
+            </figure>
+            <div class="berkshire-caption">
+                <p><strong>Welcome to the Outdoors Guide!</strong></p>
+                <p>Discover the joys of outdoors sports.</p>
+                <p>Our mission: To connect people with the outdoors through a collaborative effort between users. We are aiming to provide tips, tricks, reliable information, and guidance for responsible wildlife use to preserve our land for future generations.</p>
+                <p>Remember to always follow proper etiquette when interacting with others in the outdoors. Always use your best judgement and prioritize protecting yourself.</p>
+                <br>
+                <p class="warning-text">
+                    <strong>ALWAYS ensure you have the proper licenses and permits before engaging in public activities.</strong> Failure to comply can result in fines, jail time, or other legal repercussions. Our Activities page has recommendations, but always refer to MassWildLide.gov for updated laws.<br>
+                    <br>
+                    <strong> &#9888; Bird Watching Caution!</strong> Bird watching is open and popular all year round on public land. <Strong>HOWEVER</Strong> it is strongly recommended that bird watchers wear Blaze Orange for saftey, especially during hunting seasons, especially camoflaged seasons such as Turkey.
+                </p>
+            </div>
+        </div>
+
+        <div id="info-row" class="info-row">
+            <div class="info-box" id="safety-box">
+                <h3>Safety & Etiquette</h3>
+                <p>Always use your best judgement and prioritize protecting yourself.</p>
+                <ul style="text-align:left; padding-left:1.2rem;">
+                    <li>Plan Ahead and Prepare</li>
+                    <li>Travel and Camp on Durable Surfaces</li>
+                    <li>Dispose of Waste Properly</li>
+                    <li>Leave What You Find</li>
+                    <li>Minimize Campfire Impact</li>
+                    <li>Respect Wildlife</li>
+                    <li>Be Considerate of Others</li>
+                </ul>   
+            </div>
+            <div class="info-box" id="founder-box">
+                <h3>About the Founder</h3>
+                <img src="media/david.jpg" alt="David Perkins" width="250">
+                <p>Founder of Outdoors Guide - David Perkins</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Outdoors Guide</p>
+    </footer>
+</body>
+</html>
