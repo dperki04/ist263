@@ -37,6 +37,11 @@
             color: #fff;
             text-decoration: none;
             font-weight: bold;
+            border-bottom: 2px solid transparent;
+        }
+
+        #navigation a:hover {
+            border-bottom: 2px solid #2b2b2b;
         }
 
         main {
@@ -64,6 +69,16 @@
             border-radius: 8px;
             margin-left: auto;
         }
+        .result-item {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-item strong {
+            font-size: 1.1rem;
+            color: #356859;
+        }
+
 
         @media (max-width: 800px) {
             .media-row {
@@ -96,6 +111,12 @@
             #navigation span {
                 display: none;
             }
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
         }
 
 
@@ -106,21 +127,21 @@
         <nav id="navigation">
             <h1>Outdoors Guide - Activities</h1>
             <a href="index.html">Home</a> 
-            <span>|</span>
             <a href="gear.html">Activities</a> 
-            <span>|</span>
             <a href="map.html">Map</a>
         </nav>
     </header>
 
     <main>
-        <h2>Find the Right Gear for Every Adventure</h2>
-        <p>Use this search bar to find gear recommendations for your specific activity. Learn about the diffrent seasonal activites, required licensing, and recommended gear.</p>
+        <h2>Find the Right Adventure for you</h2>
+        <p>Use this search bar to find seasonal recommendations for your specific seasons, activities, or focuses. Learn about the diffrent seasonal activites and required licensing.</p>
 
         <section>
             <div class="media-row">
                 <div class="search-panel">
                 <h2>Find Public Land Activities</h2>
+                <p> All licenses can be purchased from <a href="https://massfishhunt.mass.gov/login" target="_blank" rel="noopener noreferrer"> MassFishHunt Site </a>.
+                </p>
                 <form id="public-land-form">
                     <label for="activity">Activity:</label>
                     <select id="activity" name="activity">
@@ -139,7 +160,7 @@
                 </form>
                     <div id="search-results"></div>
                 </div>
-                <img src="media/fishing.png" alt="Fishing gear laid out near a river">
+                <img src="media/fishing.png" alt="Man fishing in a pond">
             </div>
         </section>
 
@@ -150,14 +171,24 @@
     </footer>
         <script>
             const publicLandData = [
-                { name: "Berkshire Forest", activity: "Hiking", season: "All Year", focus: "Trails" },
-                { name: "Striped Bass Run", activity: "Fishing", season: "Spring", focus: "Striped Bass" },
-                { name: "Trout Run", activity: "Fishing", season: "Fall", focus: "Trout" },
-                { name: "Quabbin Reservoir", activity: "Boating", season: "Summer", focus: "Canoe/Kayak" },
-                { name: "Audubon Sanctuary", activity: "Bird Watching", season: "All Year", focus: "Birds" },
-                { name: "Deer Hunting Area 12", activity: "Hunting", season: "Fall", focus: "Deer" },
-                { name: "Pheasant Hunting Area 8", activity: "Hunting", season: "Winter", focus: "Pheasant" }
+                { name: "Berkshire Forest", activity: "Hiking", season: ["All Year"], focus: "Trails", licenseRequired: false },
+                { name: "Berkshire Forest", activity: "Hunting", season: ["Spring"], focus: "Turkey", licenseRequired: true },
+                { name: "Cape Cod Canal", activity: "Fishing", season: ["Spring", "Summer", "Fall"], focus: "Striped Bass", licenseRequired: true },
+                { name: "Mary's Pond", activity: "Fishing", season: ["Spring"], focus: "Trout", licenseRequired: true },
+                { name: "Quabbin Reservoir", activity: "Boating", season: ["Spring","Summer", "Fall"], focus: "Freshwater Fishing", licenseRequired: true },
+                { name: "Audubon Sanctuary - Berkshires", activity: "Bird Watching", season: ["All Year"], focus: "Birds", licenseRequired: false },
+                { name: "Myles Standish State Forest", activity: "Hunting", season: ["Fall", "Winter"], focus: "Deer", licenseRequired: true },
+                { name: "Deerfield River", activity: "Fishing", season: ["All Year"], focus: "Trout", licenseRequired: true },
+                { name: "Mary's Pond", activity: "Boating", season: ["Summer"], focus: "Freshwater Fishing", licenseRequired: true },
+                { name: "Wachusett Resevoir", activity: "Fishing", season: ["All Year"], focus: "Trout", licenseRequired: true },
+                { name: "Zones 1-14", activity: "Hunting", season: ["Fall"], focus: "Pheasant", licenseRequired: true },
+                { name: "Cape Cod Bay (Ocean)", activity: "Boating", season: ["Spring", "Summer", "Fall"], focus: "Striped Bass", licenseRequired: true },
+                { name: "Zones 1-14", activity: "Hunting", season: ["Winter"], focus: "Deer", licenseRequired: true },
+                { name: "Zones 1-14", activity: "Hunting", season: ["Spring"], focus: "Turkey", licenseRequired: true },
+                { name: "Myles Standish State Forest", activity: "Hunting", season: ["Fall"], focus: "Pheasant", licenseRequired: true }
             ];
+
+
             const activitySelect = document.getElementById('activity');
             const seasonSelect = document.getElementById('season');
             const focusSelect = document.getElementById('species');
@@ -174,7 +205,7 @@
 
             const activities = ["Hiking", "Fishing", "Boating", "Bird Watching", "Hunting"];
             const seasons = ["All Year", "Spring", "Summer", "Fall", "Winter"];
-            const focuses = ["Trails", "Striped Bass", "Trout", "Canoe/Kayak", "Birds", "Deer", "Pheasant"];
+            const focuses = ["Trails", "Striped Bass", "Trout", "Birds", "Deer", "Pheasant"];
 
 
             populateDropdown(activitySelect, activities);
@@ -186,21 +217,55 @@
                 const season = seasonSelect.value;
                 const focus = focusSelect.value;
 
-                const filtered = publicLandData.filter(item => 
+                const filtered = publicLandData.filter(item =>
                     (!activity || item.activity === activity) &&
-                    (!season || item.season === season) &&
+                    (!season || item.season.includes(season)) &&
                     (!focus || item.focus === focus)
                 );
 
-                resultsDiv.innerHTML = filtered.length
-                    ? filtered.map(item => `${item.name} — ${item.activity} (${item.season})`).join('<br>')
-                    : 'No results found.'; 
+                // resultsDiv.innerHTML = filtered.length
+                //     ? filtered.map(item => `${item.name} — ${item.activity} (${item.season})`).join('<br>')
+                //     : 'No results found.';
+                // This was my original code. It did not properly filder out duplicates and the below better organizes the results.
+                // I wrote the code above. What is below was generated by copilot (only to the .join). I think it adds
+                // Significantly to my website and makes teh layout a lot cleaner. I will leave my code commented above for reference.
+                // The javascript above, and including this above was writen by me. 
+
+
+                if (!filtered.length) {
+                    resultsDiv.textContent = 'No results found.';
+                    return;
+                }
+
+                const grouped = {};
+
+                filtered.forEach(item => {
+                    if (!grouped[item.name]) {
+                        grouped[item.name] = [];
+                    }
+
+                    grouped[item.name].push(
+                        `${item.activity} – ${item.focus} (${item.season.join(", ")})` + (item.licenseRequired ? "  &#9888; License Required" : "")
+                    );
+                });
+
+                resultsDiv.innerHTML = Object.entries(grouped)
+                    .map(([name, activities]) => `
+                        <div class="result-item">
+                            <strong>${name}</strong><br>
+                            ${activities.join("<br>")}
+                        </div>
+                    `)
+                    .join("");
+
             }
 
 
-            activitySelect.addEventListener('change', filterResults);
-            seasonSelect.addEventListener('change', filterResults);
-            focusSelect.addEventListener('change', filterResults);
+            activitySelect.addEventListener('change', filterResults); // I got these generated for me by copilot xcode extension. No prompt was given besides 
+            seasonSelect.addEventListener('change', filterResults); // Finishing my join statement, but it works well. It supposedly is better than 
+            focusSelect.addEventListener('change', filterResults); // onClick, according to my research.
+            filterResults();
+
     </script>
 </body>
 </html>

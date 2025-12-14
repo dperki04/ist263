@@ -1,152 +1,186 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Outdoors Guide - Map</title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ECE2D0;
-            color: #2b2b2b; 
-        }
-        
-        #navigation {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            background: #356859;
-            padding: 1rem;
-        }
-
-        #navigation h1 {
-            position: absolute;
-            left: 1rem;               
-            color: #fff;
-            font-size: 1.25rem;
-            margin: 0;
-            font-weight: bold;
-        }
-
-        #navigation a, h1{
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        main {
-            padding: 2rem;
-        }
-
-        iframe {
-            border-radius: 8px;
-            margin-top: 2rem;
-        }
-
-        section {
-            padding: 1rem 0;
-        }
-
-        form {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        form label {
-            margin-right: .5rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: #356859;
-            color: white;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 800px) {
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Outdoors Guide - Map</title>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <style>
+            body {
+                font-family: sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #ECE2D0;
+                color: #2b2b2b; 
+            }
+            
             #navigation {
-                flex-direction: column;   
-                align-items: flex-start; 
-                gap: 0.5rem;
-                padding: 0.5rem;
-                position: static;         
-            }
-
-            #navigation h1 {
-                position: static; 
-                font-size: 1rem;          
-                margin-bottom: 0.5rem;
-            }
-
-            #navigation a {
-                margin: 0.25rem 0;        
-            }
-
-            #navigation span {
-                display: none;
-            }
-
-            main {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                flex-wrap: wrap;
+                background: #356859;
                 padding: 1rem;
             }
 
+            #navigation h1 {
+                position: absolute;
+                left: 1rem;               
+                color: #fff;
+                font-size: 1.25rem;
+                margin: 0;
+                font-weight: bold;
+            }
+
+            #navigation a, h1{
+                color: #fff;
+                text-decoration: none;
+                font-weight: bold;
+                border-bottom: 2px solid transparent;
+            }
+
+            #navigation a:hover {
+                border-bottom: 2px solid #2b2b2b;
+            }
+
+            main {
+                padding: 2rem;
+            }
+
+            iframe {
+                border-radius: 8px;
+                margin-top: 2rem;
+            }
+
+            section {
+                padding: 1rem 0;
+            }
+
             form {
-                flex-direction: column;
-                align-items: stretch;
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                align-items: center;
             }
 
             form label {
-                margin-bottom: .5rem;
+                margin-right: .5rem;
             }
-        }
-    </style>
-</head>
-<body>
-    <header id="header">
-        <nav id="navigation">
-            <h1>Outdoors Guide - Public Lands</h1>
-            <a href="index.html">Home</a> 
-            <span>|</span>
-            <a href="gear.html">Activities</a> 
-            <span>|</span>
-            <a href="map.html">Map</a>
-        </nav id="navigation">
-    </header>
 
-    <main>
-        <p>
-        Use this interactive map to explore public lands and waterways in Massachusetts, including wildlife management areas, forests, and conservation land.
-        </p>
-        <p><strong>Note:</strong> This map comes directly from MassWildLife, and this is the official state land of Massachusetts. Always follow posted signs when on the edge of public lands.</p>
+            footer {
+                text-align: center;
+                padding: 1rem;
+                background: #356859;
+                color: white;
+                margin-top: 2rem;
+            }
 
-        <img src="../project/media/MassWildLife_logo.png" alt="MassWildlife Logo" width="100">
-        <img src="../project/media/Audobon.jpeg" alt="Audubon Society Logo" width="100">
-        <img src="../project/media/Bison.jpg" alt="Bison in the Wild" width="100">
+            .map-intro {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 1rem;
+            }
 
-        <h2>Massachusetts Land View</h2>
-        <iframe
-            src="https://mass-eoeea.maps.arcgis.com/apps/webappviewer/index.html?id=3a7c475cb6d54578ba8c7149d885ad30&embed=true"
-            width="100%"
-            height="600"
-            frameborder="0"
-            scrolling="no"
-            title="Massachusetts Public Lands Map">
-        </iframe> 
-        <p style="font-size: 0.9rem; margin-top: 0.5rem;">
-            Map  courtesy of Massachusetts Department of Wildlife and Fishieries // MassWildLife
-        </p>
+            .map-text {
+                flex: 2;
+            }
 
-    </main>
-    <footer>
-        <p>&copy; 2025 Outdoors Guide</p>
-    </footer>
-</body>
-</html>
+            .audobon-logo {
+                flex: 1;
+                text-align: right;
+            }
+
+            .audobon-logo img {
+                max-width: 150px;
+                height: auto;
+            }
+
+            @media (max-width: 800px) {
+                #navigation {
+                    flex-direction: column;   
+                    align-items: flex-start; 
+                    gap: 0.5rem;
+                    padding: 0.5rem;
+                    position: static;         
+                }
+
+                #navigation h1 {
+                    position: static; 
+                    font-size: 1rem;          
+                    margin-bottom: 0.5rem;
+                }
+
+                #navigation a {
+                    margin: 0.25rem 0;        
+                }
+
+                #navigation span {
+                    display: none;
+                }
+
+                main {
+                    padding: 1rem;
+                }
+
+                form {
+                    flex-direction: column;
+                    align-items: stretch;
+                }
+
+                form label {
+                    margin-bottom: .5rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header id="header">
+            <nav id="navigation">
+                <h1>Outdoors Guide - Public Lands</h1>
+                <a href="index.html">Home</a> 
+                <a href="gear.html">Activities</a> 
+                <a href="map.html">Map</a>
+            </nav id="navigation">
+        </header>
+
+        <main>
+           <section class="map-intro">
+                <div class="map-text">
+                    <p>
+                        Use this interactive map to explore public lands and waterways in Massachusetts, 
+                        including wildlife management areas, forests, and conservation land.
+                    </p>
+                    <p>
+                        <strong>Note:</strong> This map comes directly from MassWildLife, and this is the official state land of Massachusetts. 
+                        Always follow posted signs when on the edge of public lands.
+                    </p>
+                </div>
+                <div class="audobon-logo">
+                    <img src="../project/media/Audobon.jpeg" alt="Audubon Society Logo">
+                </div>
+            </section>
+            <img src="../project/media/MassWildLife_logo.png" alt="MassWildlife Logo" width="100">
+
+            <h2>Massachusetts Land View</h2>
+            <iframe
+                src="https://mass-eoeea.maps.arcgis.com/apps/webappviewer/index.html?id=3a7c475cb6d54578ba8c7149d885ad30&embed=true"
+                width="100%"
+                height="600"
+                frameborder="0"
+                scrolling="no"
+                title="Massachusetts Public Lands Map">
+            </iframe> 
+            <br>
+            <img src="../project/media/Bison.jpg" alt="Bison in the Wild" width="300">
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                Map  courtesy of Massachusetts Department of Wildlife and Fishieries // MassWildLife
+            </p>
+
+        </main>
+        <footer>
+            <p>&copy; 2025 Outdoors Guide</p>
+        </footer>
+    </body>
+    </html>
